@@ -1,0 +1,60 @@
+# Presentation Outline
+
+- Introduce self
+- python-enviornments repo available
+- Describe the problem
+    - python installations: problems with aliases, what if you need multiple version of python
+    - dependency management largely left up to the user, unlike node or .NET
+- pyenv demo
+    - how to install
+    - usage
+        - `pyenv versions` to display python version on system
+        - `pyenv global` to set a different python version
+        - `pyenv install --versions` to list available versions
+        - `pyenv install --list | grep '^[[:space:]]*3.'` get the proper python versions
+        - `pyenv install {version}` to install a new version
+        - `pyenv local {version}` to set local version
+- venv demo
+    - `python -m venv venv` to create a virtual environment, venv/ folder
+    - `source venv/bin/activate` to activate virtual environment--will be different per system
+    - `pip install requests` installs requests into virtual environment
+        - `python -c 'import requests; print("ok");'` to verify install
+        - `deactivate` to deactivate the virtual environment
+        - try to import again; it will fail
+    - `pip freeze > requirements.txt` will write your dependencies
+    - with the requirements.txt, you now can:
+        - recreate the virtual environment from scratch
+        - commit the requirements.txt artifact to source control
+        - use requirements.txt for parts of your deployment (e.g. pipeline or SAM)
+    - `deactivate` deactivates the virtual environment
+    - `rm -rf venv/` effectively deletes the virtual environment
+- AWS serverless function demo
+    - Introduce AWS lambda functions and serverless functions
+    - Create cloudformation for serverless function
+    - Create app.py code
+    - deploy the serverless function
+    - Run sam build to build dependencies; specific correct python version
+    - Sam deploy
+    - Test lambda function again
+- Overview of other tools
+    - pipenv
+        - `pipenv --python 3.11` creates pipfile
+        - `pipenv install requests` installs requests into vitual environment, adds requests to pipfile and pipfile.lock
+        - `pipenv install --dev pytest`
+        - `pipenv shell` gets a shell in the virtual environment, so you don't have to prepend `pipenv ...`
+        - `pipenv requirements > requirements.txt` exports requirements file
+        - pipenv supports a scripts section
+        - `pipenv --rm` deletes virtual environment
+    - poetry
+        - `poetry new demo-po` creates new poetry project named "demo-po" with pyproject.toml
+        - Show more complex pyproject.toml (python-environments project)
+        - has ability to export to requirements.txt
+    - uv
+        - `uv init demo-uv-proj` creates uv project
+        - works within the pyenv + venv paradigm
+        - `uv venv` creates virtual environment
+        - `source .venv/bin/activate`
+        - `uv pip install requests`
+        - `uv add requests`
+        - cleanup/delete the same way you would pyenv + venv
+    - comparison chart in python-environments project
