@@ -1,6 +1,11 @@
 # Presentation Outline
 
 - Introduce self
+- Agenda:
+    - pyenv + venv
+    - AWS deploy
+    - other python management tools (pipenv, poetry, uv)
+    - Q&A
 - python-enviornments repo available
 - Describe the problem
     - python installations: problems with aliases, what if you need multiple version of python
@@ -58,3 +63,4 @@
         - `uv add requests`
         - cleanup/delete the same way you would pyenv + venv
     - comparison chart in python-environments project
+    - Questions
